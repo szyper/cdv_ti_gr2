@@ -1,4 +1,6 @@
 <?php
+	//php
+
 	$firstName = "Janusz";
 	$lastName = "Nowak";
 	echo "Imię i  nazwisko: $firstName $lastName<br>";
@@ -12,7 +14,7 @@
 	<hr>
 DATA;
 
-	//nowdoc
+	//nowdoc>
 	echo <<< 'DATA'
 	<hr>
 	Imię: $firstName<br>
