@@ -1,4 +1,6 @@
 <?php
+	//php
+
 	$firstName = "Janusz";
 	$lastName = "Nowak";
 	echo "Imię i  nazwisko: $firstName $lastName<br>";
