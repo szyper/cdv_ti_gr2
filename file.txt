@@ -1,0 +1,10 @@
+Loaded Configuration File	C:\xampp\php\php.ini
+upload_max_filesize	40M	40M
+DOCUMENT_ROOT	C:/xampp/htdocs
+
+http://localhost/phpmyadmin/
+mysqld.exe
+Typ serwera: MariaDB
+
+http://localhost/git/studia/cdv/cdv_ti_gr2/2_html.php
+https://github.com/szyper/cdv_ti_gr2
