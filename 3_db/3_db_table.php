@@ -7,12 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../style/table.css">
 </head>
+<body>
     <title>Użytkownicy</title>
-		<h4>Użytkownicy z db</h4>
+		<h4>Użytkownicy z db cdv_gr2</h4>
 
 	<?php
 		require_once "../scripts/connect.php";
-		$sql = "SELECT u.id, u.firstName, u.lastName, u.birthday, c.city FROM `users` u INNER JOIN  `cities` c ON `u`.`city_id` = `c`.`id`;;";
+		$sql = "SELECT u.id, u.firstName, u.lastName, u.birthday, c.city FROM `users` u INNER JOIN  `cities` c ON `u`.`city_id` = `c`.`id`;";
 		$result = $conn->query($sql);
 
     if (isset($_GET["deleteUser"])){
@@ -56,9 +57,16 @@ TABLEUSERS;
   }
 
   echo "</table>";
-	?>
 
-<body>
+  if (isset($_GET["addUser"])){
+    echo <<< ADDUSERFORM
+      <h4>Dodawanie użytkownika</h4>
+ADDUSERFORM;
+  }else{
+    echo "<hr><a href=\"./3_db_table.php?addUser=1\">Dodaj użytkownika</a>";
+  }
+
+	?>
 
 </body>
 </html>
