@@ -12,8 +12,17 @@
 
 	<?php
 		require_once "../scripts/connect.php";
-		$sql = "SELECT * FROM `users` INNER JOIN  `cities` ON `users`.`city_id` = `cities`.`id`;";
+		$sql = "SELECT u.id, u.firstName, u.lastName, u.birthday, c.city FROM `users` u INNER JOIN  `cities` c ON `u`.`city_id` = `c`.`id`;;";
 		$result = $conn->query($sql);
+
+    if (isset($_GET["deleteUser"])){
+      if ($_GET["deleteUser"] == 0){
+        echo "Nie udało się usunąć rekordu!<hr>";
+      }else{
+        echo "Usunięto rekord o id=$_GET[deleteUser]<hr>";
+      }
+    }
+
   echo <<< TABLEUSERS
     <table>
       <tr>
@@ -24,20 +33,28 @@
         <th>Miasto</th>
       </tr>
 TABLEUSERS;
-	while($user = $result->fetch_assoc())
-	{
-    $year = substr($user["birthday"], 0, 4);
-		echo <<< TABLEUSERS
+
+//  echo $result->num_rows;
+  if ($result->num_rows == 0){
+    echo "<tr><td colspan='5'>Brak rekordów do wyświetlenia</td></tr>";
+  }else{
+	  while($user = $result->fetch_assoc())
+	  {
+		  $year = substr($user["birthday"], 0, 4);
+		  echo <<< TABLEUSERS
 			<tr>
         <td>$user[firstName]</td>
         <td>$user[lastName]</td>
         <td>$user[birthday]</td>
         <td>$year</td>
         <td>$user[city]</td>
+        <td><a href="../scripts/delete_user.php?userId=$user[id]">Usuń</a></td>
       </tr>
 TABLEUSERS;
 
-	}
+	  }
+  }
+
   echo "</table>";
 	?>
 
