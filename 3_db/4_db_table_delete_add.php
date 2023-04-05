@@ -24,6 +24,14 @@
       }
     }
 
+    if (isset($_GET["addUser"])){
+      if ($_GET["addUser"] == 1){
+        echo "<h4>Prawidłowo dodano rekord</h4>";
+      }else{
+	      echo "<h4>Użytkownik nie został dodany prawidłowo!</h4>";
+      }
+    }
+
   echo <<< TABLEUSERS
     <table>
       <tr>
@@ -61,11 +69,27 @@ TABLEUSERS;
   if (isset($_GET["addUser"])){
     echo <<< ADDUSERFORM
       <h4>Dodawanie użytkownika</h4>
+      <form action="../scripts/add_user.php" method="post">
+        <input type="text" name="firstName" placeholder="Podaj imię"><br><br>
+        <input type="text" name="lastName" placeholder="Podaj nazwisko"><br><br>
+        <input type="date" name="birthday"> Data urodzenia<br><br>
+<!--        <input type="number" name="city_id" placeholder="Podaj id miasta"><br><br>-->
+        <select>
+ADDUSERFORM;
+        $sql = "SELECT id, city FROM cities";
+        $result = $conn->query($sql);
+        while($city = $result->fetch_assoc()){
+          //dodajemy opcje
+        }
+	  echo <<< ADDUSERFORM
+        </select>
+        <input type="submit" value="Dodaj użytkownika">
+      </form>
 ADDUSERFORM;
   }else{
-    echo "<hr><a href=\"./3_db_table.php?addUser=1\">Dodaj użytkownika</a>";
+    echo "<hr><a href=\"./4_db_table_delete_add.php?addUser=1\">Dodaj użytkownika</a>";
   }
-
+  $conn->close();
 	?>
 
 </body>
