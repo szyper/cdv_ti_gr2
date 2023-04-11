@@ -17,4 +17,4 @@ if ($conn->affected_rows == 0){
 	$deleteUser = $_GET["userId"];
 }
 
-header("location: ../3_db/4_db_table_delete_add.php?deleteUser=$deleteUser");
+header("location: ../3_db/5_db_table_delete_add_update.php?deleteUser=$deleteUser");

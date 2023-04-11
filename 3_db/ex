@@ -4,3 +4,12 @@ T) Dodjemy użytkownika ==> wyświetlamy komunikat, że prawidłowow dodano uży
 F) Nie dodajemy użytkownika ==> komunikat: zatwierdź regulamin
 
 Co należy zrobić, aby zawartość zmiennej sesyjnej nie wyświetlała się? (unset)
+
+Aktualizacja użytkownika
+action="../scripts//.php"  => błędne dane
+w polach muszą wyświetlić się dane pobrane z db (SELECT o określonym id)
+miasto => wyświetla się miasto, z którego jest użytkownik (właściwość ?) => 
+Regulamin => musi być zatwierdzony
+
+UPDATE `users` SET `lastName` = 'nowak1' WHERE `users`.`id` = 34;
+UPDATE `users` SET `city_id` = '2', `firstName` = 'Krystyna2', `lastName` = 'nowak12', `birthday` = '2023-04-13' WHERE `users`.`id` = 34;

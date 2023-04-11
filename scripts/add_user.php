@@ -29,7 +29,7 @@
 	$conn->query($sql);
 	//echo $conn->affected_rows;
 	if ($conn->affected_rows){
-		header("location: ../3_db/4_db_table_delete_add.php?addUser=1");
+		header("location: ../3_db/5_db_table_delete_add_update.php?addUser=1");
 	}else{
-		header("location: ../3_db/4_db_table_delete_add.php?addUser=0");
+		header("location: ../3_db/5_db_table_delete_add_update.php?addUser=0");
 	}

@@ -8,3 +8,9 @@ Typ serwera: MariaDB
 
 http://localhost/git/studia/cdv/cdv_ti_gr2/2_html.php
 https://github.com/szyper/cdv_ti_gr2
+
+git checkout -b "update_user"
+ git add *
+  git commit -m "new branch"
+  git push --set-upstream origin update_user
+
