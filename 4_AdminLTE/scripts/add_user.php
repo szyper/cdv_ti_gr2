@@ -35,14 +35,14 @@
 
 	$pass = password_hash($_POST["pass1"], PASSWORD_ARGON2ID);
 	echo $pass;
-	
+
 	//echo "ok";
 	require_once "./connect.php";
-	$sql = "INSERT INTO `users` (`id`, `city_id`, `firstName`, `lastName`, `email`, `password`, `birthday`) VALUES (NULL, '1', '$_POST[firstName]', '$_POST[lastName]', '$_POST[email1]', '$pass', '$_POST[birthday]');";
+	$sql = "INSERT INTO `users` (`id`, `city_id`, `firstName`, `lastName`, `email`, `password`, `birthday`) VALUES (NULL, '$_POST[city_id]', '$_POST[firstName]', '$_POST[lastName]', '$_POST[email1]', '$pass', '$_POST[birthday]');";
 	$conn->query($sql);
 	//echo $conn->affected_rows;
 	if ($conn->affected_rows){
-		//header("location: ../3_db/5_db_table_delete_add_update.php?addUser=1");
+		header("location: ../pages/login.php?addUser=1");
 	}else{
-		//header("location: ../3_db/5_db_table_delete_add_update.php?addUser=0");
+		header("location: ../pages/login.php?addUser=0");
 	}

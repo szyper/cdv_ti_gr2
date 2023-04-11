@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,9 +18,33 @@
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition register-page">
+
 <div class="register-box">
   <div class="card card-outline card-primary">
+
     <div class="card-header text-center">
+
+
+<!--      komunikat     -->
+	    <?php
+	    if (isset($_SESSION["error"])){
+	    ?>
+        <div class="card card-danger">
+          <div class="card-header">
+            <h3 class="card-title">Uwaga</h3>
+          </div>
+          <div class="card-body">
+            <?php
+            echo $_SESSION["error"];
+            unset($_SESSION["error"]);
+            ?>
+          </div>
+        </div>
+      <?php
+	    }
+      ?>
+
+
       <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
     </div>
     <div class="card-body">
@@ -86,6 +113,19 @@
               <span class="fas fa-lock"></span>
             </div>
           </div>
+        </div>
+
+        <div class="form-group">
+          <select class="custom-select rounded-0" id="exampleSelectRounded0" name="city_id">
+            <?php
+            require_once "../scripts/connect.php";
+            $sql = "SELECT id, city FROM cities";
+            $result = $conn->query($sql);
+            while($city = $result->fetch_assoc()){
+	            echo "<option value=\"$city[id]\">$city[city]</option>";
+            }
+            ?>
+          </select>
         </div>
 
         <div class="row">
