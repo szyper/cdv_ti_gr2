@@ -118,12 +118,14 @@ ADDUSERFORM;
 
 	if (isset($_GET["updateId"])){
     $sql = "SELECT * FROM users WHERE users.id=$_GET[updateId]";
+    $_SESSION["updateUserId"] = $_GET["updateId"];
     $result = $conn->query($sql);
     $user = $result->fetch_assoc();
     //echo $user["firstName"];
+    //echo $user["city_id"];
 		echo <<< UPDATEUSERFORM
       <h4>Aktualizacja użytkownika</h4>
-      <form action="../scripts/add_user.php" method="post">
+      <form action="../scripts/update_user.php" method="post">
         <input type="text" name="firstName" placeholder="Podaj imię" value="$user[firstName]"><br><br>
         <input type="text" name="lastName" placeholder="Podaj nazwisko" value="$user[lastName]"><br><br>
         <input type="date" name="birthday"  value="$user[birthday]"> Data urodzenia<br><br>
@@ -133,7 +135,11 @@ UPDATEUSERFORM;
 		$sql = "SELECT id, city FROM `cities`";
 		$result = $conn->query($sql);
 		while($city = $result->fetch_assoc()){
-			echo "<option value=\"$city[id]\">$city[city]</option>";
+      if ($city["id"] == $user["city_id"]){
+	      echo "<option value=\"$city[id]\" selected>$city[city]</option>";
+      }else{
+	      echo "<option value=\"$city[id]\">$city[city]</option>";
+      }
 		}
 		echo <<< UPDATEUSERFORM
         </select><br><br>

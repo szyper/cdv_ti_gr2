@@ -8,7 +8,7 @@ Co należy zrobić, aby zawartość zmiennej sesyjnej nie wyświetlała się? (u
 Aktualizacja użytkownika
 action="../scripts//.php"  => błędne dane
 w polach muszą wyświetlić się dane pobrane z db (SELECT o określonym id)
-miasto => wyświetla się miasto, z którego jest użytkownik (właściwość ?) => 
+miasto => wyświetla się miasto, z którego jest użytkownik (właściwość ?) =>
 Regulamin => musi być zatwierdzony
 
 UPDATE `users` SET `lastName` = 'nowak1' WHERE `users`.`id` = 34;
