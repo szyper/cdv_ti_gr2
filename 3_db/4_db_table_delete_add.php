@@ -1,4 +1,19 @@
+<?php
+  session_start();
+?>
 <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -30,6 +45,11 @@
       }else{
 	      echo "<h4>Użytkownik nie został dodany prawidłowo!</h4>";
       }
+    }
+
+    if (isset($_SESSION["error"])){
+      echo '<br>'.$_SESSION["error"].'<br><br>';
+      unset($_SESSION["error"]);
     }
 
   echo <<< TABLEUSERS
@@ -74,15 +94,16 @@ TABLEUSERS;
         <input type="text" name="lastName" placeholder="Podaj nazwisko"><br><br>
         <input type="date" name="birthday"> Data urodzenia<br><br>
 <!--        <input type="number" name="city_id" placeholder="Podaj id miasta"><br><br>-->
-        <select>
+        <select name="city_id">
 ADDUSERFORM;
         $sql = "SELECT id, city FROM cities";
         $result = $conn->query($sql);
         while($city = $result->fetch_assoc()){
-          //dodajemy opcje
+          echo "<option value=\"$city[id]\">$city[city]</option>";
         }
 	  echo <<< ADDUSERFORM
-        </select>
+        </select><br><br>
+        <input type="checkbox" name="term"> Regulamin<br><br>
         <input type="submit" value="Dodaj użytkownika">
       </form>
 ADDUSERFORM;

@@ -1,0 +1,6 @@
+1) Dodaj pole checkbox dotyczące regulaminu
+2) Sprawdzić czy to pole zostało zatwierdzone:
+T) Dodjemy użytkownika ==> wyświetlamy komunikat, że prawidłowow dodano użytkownika
+F) Nie dodajemy użytkownika ==> komunikat: zatwierdź regulamin
+
+Co należy zrobić, aby zawartość zmiennej sesyjnej nie wyświetlała się? (unset)

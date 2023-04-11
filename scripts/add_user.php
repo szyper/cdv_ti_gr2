@@ -1,13 +1,26 @@
 <?php
+	session_start();
 	print_r($_POST);
+	$error = 0;
 	foreach ($_POST as $key => $value){
 		//echo "$key: $value<br>";
 		if (empty($value)){
 			//echo "$key<br>";
 			//echo "error";
+			$_SESSION["error"] = "Wypełnij wszystkie pola!";
 			echo "<script>history.back();</script>";
 			exit();
 		}
+	}
+
+	if (!isset($_POST["term"])){
+		$_SESSION["error"] = "Wypełnij regulamin!";
+		$error = 1;
+	}
+
+	if ($error != 0){
+		echo "<script>history.back();</script>";
+		exit();
 	}
 
 	//echo "ok";
