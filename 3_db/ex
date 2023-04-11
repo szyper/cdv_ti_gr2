@@ -13,3 +13,5 @@ Regulamin => musi być zatwierdzony
 
 UPDATE `users` SET `lastName` = 'nowak1' WHERE `users`.`id` = 34;
 UPDATE `users` SET `city_id` = '2', `firstName` = 'Krystyna2', `lastName` = 'nowak12', `birthday` = '2023-04-13' WHERE `users`.`id` = 34;
+
+CRUD

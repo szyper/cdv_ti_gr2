@@ -47,6 +47,14 @@
       }
     }
 
+    if (isset($_GET["updateUser"])){
+      if ($_GET["updateUser"] == 1){
+        echo "<h4>Prawidłowo zaktualizowano rekord</h4>";
+      }else{
+	      echo "<h4>Użytkownik nie został zaktualizowany prawidłowo!</h4>";
+      }
+    }
+
     if (isset($_SESSION["error"])){
       echo '<br>'.$_SESSION["error"].'<br><br>';
       unset($_SESSION["error"]);
