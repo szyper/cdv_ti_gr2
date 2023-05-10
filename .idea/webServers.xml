@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="17677db5-c7d2-44d4-b1f6-c7692c7284c4" name="serv_php" url="http://localhost/git/cdv/cdv_ti_gr2/3_db/3_db_table.php">
+        <fileTransfer accessType="LOCAL" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	print_r($_POST);
+	//print_r($_POST);
 	$error = 0;
 	foreach ($_POST as $key => $value){
 		//echo "$key: $value<br>";
@@ -34,14 +34,19 @@
 	}
 
 	$pass = password_hash($_POST["pass1"], PASSWORD_ARGON2ID);
-	echo $pass;
+	//echo $pass;
 
-	//echo "ok";
 	require_once "./connect.php";
-	$sql = "INSERT INTO `users` (`id`, `city_id`, `firstName`, `lastName`, `email`, `password`, `birthday`) VALUES (NULL, '$_POST[city_id]', '$_POST[firstName]', '$_POST[lastName]', '$_POST[email1]', '$pass', '$_POST[birthday]');";
-	$conn->query($sql);
-	//echo $conn->affected_rows;
-	if ($conn->affected_rows){
+//	$sql = "INSERT INTO `users` (`id`, `city_id`, `firstName`, `lastName`, `email`, `password`, `birthday`) VALUES (NULL, '$_POST[city_id]', '$_POST[firstName]', '$_POST[lastName]', '$_POST[email1]', '$pass', '$_POST[birthday]');";
+
+$stmt = $conn->prepare("INSERT INTO `users` (`city_id`, `firstName`, `lastName`, `email`, `password`, `birthday`) VALUES ( ?, ?, ?, ?, ?, ?);");
+
+$stmt->bind_param('ssssss', $_POST["city_id"], $_POST["firstName"], $_POST["lastName"], $_POST["email1"], $pass, $_POST["birthday"]);
+
+$stmt->execute();
+
+//echo $stmt->affected_rows;
+	if ($stmt->affected_rows){
 		header("location: ../pages/login.php?addUser=1");
 	}else{
 		header("location: ../pages/login.php?addUser=0");
