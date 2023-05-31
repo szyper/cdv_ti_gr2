@@ -15,3 +15,7 @@
 		//echo $error_message;
 		header("location: ../pages/login.php?error=".urlencode($error_message));
 	}
+
+	require_once "./connect.php";
+
+

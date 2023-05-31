@@ -32,9 +32,6 @@ ERROR;
 
     }
   ?>
-
-  <div class="card card-outline card-primary">
-    <div class="card-header text-center">
       <!--      komunikat     -->
 
 	    <?php
@@ -63,6 +60,8 @@ ERROR;
 		    <?php
 	    }
 	    ?>
+<div class="card card-outline card-primary">
+  <div class="card-header text-center">
       <a href="#" class="h1"><b>Admin</b>LTE</a>
     </div>
     <div class="card-body">
