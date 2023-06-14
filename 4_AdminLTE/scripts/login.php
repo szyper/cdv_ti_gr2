@@ -32,11 +32,12 @@
 				$_SESSION["logged"]["firstName"] = $user["firstName"];
 				$_SESSION["logged"]["lastName"] = $user["lastName"];
 				$_SESSION["logged"]["session_id"] = session_id();
-				echo session_id();
-//				$_SESSION["logged"]["role_id"] = $user["role_id"];
+				//echo session_id();
+				$_SESSION["logged"]["role_id"] = $user["role_id"];
 
 
-				print_r($_SESSION["logged"]);
+				//print_r($_SESSION["logged"]);
+				header("location: ../pages/logged/logged.php");
 
 
 			}else{
